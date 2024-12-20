@@ -1,14 +1,33 @@
 "use client";
 import { RootState } from "@/libs/redux/store";
 import { AuditLogType } from "@/types/auditLogType";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 export default function AuditLogs() {
-  const { auditLogs } = useSelector((state: RootState) => state.systemFeatures);
+  const { auditLogs, features } = useSelector(
+    (state: RootState) => state.systemFeatures
+  );
 
   const [auditExpanded, setAuditExpanded] = useState(false);
+  const [filteredLogs, setFilteredLogs] = useState<AuditLogType[]>(auditLogs);
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedFeature = e.target.value;
+    if (selectedFeature === "all") {
+      setFilteredLogs(auditLogs);
+    } else {
+      const filteredLogs = auditLogs.filter(
+        (log) => log.featureName === selectedFeature
+      );
+      setFilteredLogs(filteredLogs);
+    }
+  };
+
+  useEffect(() => {
+    setFilteredLogs(auditLogs);
+  }, [auditLogs]);
 
   return (
     <div className="mt-4 bg-[#1b1f23] p-2 rounded-lg border border-gray-500">
@@ -23,11 +42,24 @@ export default function AuditLogs() {
           onChange={() => setAuditExpanded((prev) => !prev)}
         />
         <span>Audit Logs</span>
+        {auditLogs.length > 0 && (
+          <select
+            onChange={(e) => handleSelectChange(e)}
+            className="bg-[#1b1f23] border border-gray-500 rounded p-1"
+          >
+            <option value="all">All Features</option>
+            {features.map((feature) => (
+              <option key={feature.id} value={feature.name}>
+                {feature.name}
+              </option>
+            ))}
+          </select>
+        )}
         {auditExpanded ? <FaChevronUp /> : <FaChevronDown />}
       </label>
       {auditExpanded && (
         <div className="p-2 bg-[#1b1f23] border-t border-gray-500">
-          {auditLogs.length === 0 ? (
+          {filteredLogs.length === 0 ? (
             <p className="text-center">No Audit Logs</p>
           ) : (
             <div className="overflow-x-auto">
@@ -52,7 +84,7 @@ export default function AuditLogs() {
                   </tr>
                 </thead>
                 <tbody className=" divide-y divide-gray-200">
-                  {auditLogs
+                  {filteredLogs
                     ?.slice()
                     .reverse()
                     .map((log: AuditLogType) => (
