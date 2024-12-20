@@ -1,9 +1,9 @@
 "use client";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import CommentType from "@/types/commentType";
-import Comment from "../Comment/Comment";
-import NewCommentInput from "../NewCommentInput/NewCommentInput";
+import { CommentType } from "@/types/commentType";
+import Comment from "./Comment/Comment";
+import NewCommentInput from "./NewCommentInput/NewCommentInput";
 
 export default function CommentsSection() {
   const { features } = useSelector((state: RootState) => state.systemFeatures);

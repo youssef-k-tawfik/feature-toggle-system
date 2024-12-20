@@ -1,12 +1,15 @@
+import { AuditLogType } from "@/types/auditLogType";
+import { CommentType } from "@/types/commentType";
+import { FeatureType } from "@/types/featureType";
 import { configureStore } from "@reduxjs/toolkit";
 
-export const comments = [
+export const comments: CommentType[] = [
   {
     id: 9389,
     username: "Abe Toulwani",
     userProfileSrc: "https://www.linkedin.com/in/abetoluwani/",
     avatarSrc:
-      "https://media.licdn.com/dms/image/v2/D4E03AQHhiy7n1_AOAw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1720138262693?e=1740009600&v=beta&t=xd99vw0eH2ezmbjCDODnmr983pTCujsSjOjJcQOkLRI",
+      "https://ca.slack-edge.com/T05C2070079-U077BFHEUDA-a61aa9fee872-512",
     text: "Welcome to the team!",
   },
   {
@@ -14,21 +17,72 @@ export const comments = [
     username: "Samuel Sakinbarnes",
     userProfileSrc: "https://www.linkedin.com/in/samuel-sakinbarnes-2837b5171/",
     avatarSrc:
-      "https://media.licdn.com/dms/image/v2/D4D03AQEMmJtSPL8bIQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1722377189606?e=1740009600&v=beta&t=1BRtZqMnZDwoNL8HOtXkwWEgo5SPxZfsMXf85x1sqNk",
+      "https://ca.slack-edge.com/T05C2070079-U06M4K8DYNS-g6fada8643b7-512",
     text: "Party time, Yaaaaaaaaay!",
   },
 ];
 
-export const features = [
-  { id: 0, name: "like", enabled: true },
-  { id: 1, name: "comment", enabled: true },
-  { id: 2, name: "share", enabled: true },
+export const features: FeatureType[] = [
+  {
+    id: "ert-erter-bvnv",
+    name: "like",
+    description: "This feature allows users to like a post",
+    enabled: true,
+  },
+  {
+    id: "nkoldfgs-wefnlk",
+    name: "comment",
+    description: "This feature allows users to comment on a post",
+    enabled: true,
+  },
+  {
+    id: "qwe-qwe",
+    name: "share",
+    description: "This feature allows users to share a post",
+    enabled: true,
+  },
+];
+
+export const token: string = "testToken";
+
+const now = new Date();
+export const auditLogs: AuditLogType[] = [
+  {
+    id: "6000",
+    featureName: "like",
+    previousState: true,
+    newState: false,
+    changedBy: "admin",
+    timestamp: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()} ${now.getDate()}/${
+      now.getMonth() + 1
+    }/${now.getFullYear()}`,
+  },
+  {
+    id: "9833",
+    featureName: "comment",
+    previousState: true,
+    newState: false,
+    changedBy: "admin",
+    timestamp: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()} ${now.getDate()}/${
+      now.getMonth() + 1
+    }/${now.getFullYear()}`,
+  },
+  {
+    id: "1244",
+    featureName: "share",
+    previousState: true,
+    newState: false,
+    changedBy: "admin",
+    timestamp: `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()} ${now.getDate()}/${
+      now.getMonth() + 1
+    }/${now.getFullYear()}`,
+  },
 ];
 
 export const mockStore = configureStore({
   reducer: {
+    user: (state = { userToken: token }) => state,
     post: (state = { comments }) => state,
-    systemFeatures: (state = { features }) => state,
+    systemFeatures: (state = { features, auditLogs }) => state,
   },
 });
-

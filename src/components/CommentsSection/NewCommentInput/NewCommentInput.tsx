@@ -1,4 +1,5 @@
-import Avatar from "../Avatar/Avatar";
+import Avatar from "@/components/Avatar/Avatar";
+
 
 export default function NewCommentInput() {
   return (

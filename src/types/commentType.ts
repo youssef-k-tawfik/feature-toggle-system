@@ -1,4 +1,4 @@
-export default interface CommentType {
+export interface CommentType {
   id: number;
   username: string;
   userProfileSrc: string;

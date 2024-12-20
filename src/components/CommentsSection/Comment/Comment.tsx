@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Avatar from "../Avatar/Avatar";
-import CommentType from "@/types/commentType";
+import Avatar from "../../Avatar/Avatar";
+import { CommentType } from "@/types/commentType";
 
 export default function Comment({ comment }: { comment: CommentType }) {
   return (

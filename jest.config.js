@@ -8,4 +8,12 @@ module.exports = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
+  // This is necessary because next.js forces { "jsx": "preserve" }, but ts-jest appears to require { "jsx": "react" }
+  globals: {
+    "ts-jest": {
+      tsconfig: {
+        jsx: "react-jsx",
+      },
+    },
+  },
 };

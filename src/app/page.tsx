@@ -1,6 +1,7 @@
 import Avatar from "@/components/Avatar/Avatar";
 import Comments from "@/components/CommentsSection/CommentsSection";
-import Features from "@/components/Features/Features";
+import LogoutButton from "@/components/LogoutButton/LogoutButton";
+import Features from "@/components/PostFeatures/PostFeatures";
 import LikesCounter from "@/components/PostStatistics/PostStatistics";
 import SettingsButton from "@/components/SettingsFixedButton/SettingsFixedButton";
 import Image from "next/image";
@@ -12,7 +13,7 @@ export default function Home() {
       <div className="bg-[#1b1f23]  rounded-lg p-4 max-w-md w-full">
         {/* Pose Header */}
         <div className="flex items-center mb-4">
-          <Avatar src="https://media.licdn.com/dms/image/v2/D4E03AQGvGYvTTygpBw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731563248801?e=1740009600&v=beta&t=h0H9mB5t8e6UMzovKJPnJDu34wA8VMRIKG0VRHcvBfQ" />
+          <Avatar src="https://avatars.githubusercontent.com/u/118983781?v=4" />
           <div className="ml-3">
             <Link
               href={"https://www.linkedin.com/in/youssef-k-tawfik/"}
@@ -46,6 +47,7 @@ export default function Home() {
         <div className="w-full h-[2px] mb-4 bg-white"></div>
         <Comments />
       </div>
+      <LogoutButton />
       {/* settings control button */}
       <SettingsButton />
     </main>

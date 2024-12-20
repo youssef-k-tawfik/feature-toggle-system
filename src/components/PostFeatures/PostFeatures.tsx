@@ -4,6 +4,7 @@ import { togglePostLike } from "@/redux/features/post/post";
 import { RootState } from "@/redux/store";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FeatureType } from "@/types/featureType";
 
 export default function Features() {
   const { features } = useSelector((state: RootState) => state.systemFeatures);
@@ -36,7 +37,7 @@ export default function Features() {
 
   return (
     <div className="flex mb-2 gap-1 relative">
-      {features.map((feature) => (
+      {features?.map((feature: FeatureType) => (
         <button
           key={feature.id}
           disabled={!feature.enabled}

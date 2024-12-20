@@ -7,12 +7,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "wakaw.ca",
-      },
-      {
-        protocol: "https",
         hostname: "media.licdn.com",
-      }
+      },
     ],
   },
 };

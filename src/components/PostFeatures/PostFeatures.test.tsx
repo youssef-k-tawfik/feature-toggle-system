@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Features from "./Features";
+import Features from "./PostFeatures";
 import "@testing-library/jest-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
@@ -12,7 +12,7 @@ const renderWithProvider = (
   return render(<Provider store={store}>{ui}</Provider>);
 };
 
-describe("Features component", () => {
+describe("PostFeatures component", () => {
   it("renders all features", () => {
     renderWithProvider(<Features />);
     features?.forEach((feature) => {
