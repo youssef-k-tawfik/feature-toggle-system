@@ -9,10 +9,21 @@ export default async function handler(
   try {
     // Get all audit logs
     if (req.method === "GET") {
-      console.log("Fetching all audit logs...");
-      const auditLogs = await prisma.auditLog.findMany();
-      console.log("Fetched audit logs successfully!");
-      res.status(200).json(auditLogs);
+      const { featureName } = req.query;
+
+      if (featureName) {
+        console.log(`Fetching audit logs for feature: ${featureName}`);
+        const auditLogs = await prisma.auditLog.findMany({
+          where: { featureName: featureName as string },
+        });
+        console.log("Fetched audit logs successfully!");
+        res.status(200).json(auditLogs);
+      } else {
+        console.log("Fetching all audit logs...");
+        const auditLogs = await prisma.auditLog.findMany();
+        console.log("Fetched audit logs successfully!");
+        res.status(200).json(auditLogs);
+      }
     }
     // Create a new audit log
     else if (req.method === "POST") {
