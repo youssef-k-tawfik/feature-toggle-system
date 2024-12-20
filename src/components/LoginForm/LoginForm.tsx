@@ -1,5 +1,6 @@
 "use client";
-import { login } from "@/redux/features/user/user";
+
+import { login } from "@/libs/redux/features/user/user";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 

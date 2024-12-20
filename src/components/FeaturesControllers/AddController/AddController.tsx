@@ -1,6 +1,6 @@
 "use client";
-import { addNewFeature } from "@/redux/features/systemFeatures/systemFeatures";
-import { RootState } from "@/redux/store";
+import { addNewFeature } from "@/libs/redux/features/systemFeatures/systemFeatures";
+import { RootState } from "@/libs/redux/store";
 import { FeatureType } from "@/types/featureType";
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";

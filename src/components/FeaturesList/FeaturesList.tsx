@@ -1,10 +1,10 @@
 "use client";
-import { toggleFeature } from "@/redux/features/systemFeatures/systemFeatures";
 import { FeatureType } from "@/types/featureType";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 import LoginForm from "../LoginForm/LoginForm";
 import { useState } from "react";
+import { RootState } from "@/libs/redux/store";
+import { toggleFeature } from "@/libs/redux/features/systemFeatures/systemFeatures";
 
 export default function FeaturesList() {
   const { userToken } = useSelector((state: RootState) => state.user);
@@ -36,7 +36,7 @@ export default function FeaturesList() {
               className="capitalize block mb-3 cursor-pointer border border-gray-500 rounded-lg"
               htmlFor={feature.id.toString()}
             >
-              <div className="select-none flex items-center justify-between  py-1 px-2  min-w-max">
+              <div className="border-b select-none flex items-center justify-between  pt-1 px-2  min-w-max">
                 <p className="me-4 font-semibold">{feature.name}</p>
                 <div className="flex items-center gap-2">
                   <p className="text-gray-500">
@@ -51,7 +51,7 @@ export default function FeaturesList() {
                   />
                 </div>
               </div>
-              <p className="ml-2 text-sm">{feature.description}</p>
+              <p className="p-2 text-sm">{feature.description}</p>
             </label>
           ))}
         </>

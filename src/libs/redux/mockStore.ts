@@ -14,7 +14,7 @@ export const comments: CommentType[] = [
   },
   {
     id: 4678,
-    username: "Samuel Sakinbarnes",
+    username: "ZygeSam",
     userProfileSrc: "https://www.linkedin.com/in/samuel-sakinbarnes-2837b5171/",
     avatarSrc:
       "https://ca.slack-edge.com/T05C2070079-U06M4K8DYNS-g6fada8643b7-512",

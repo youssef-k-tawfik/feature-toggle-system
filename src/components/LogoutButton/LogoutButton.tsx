@@ -1,6 +1,6 @@
 "use client";
-import { logout } from "@/redux/features/user/user";
-import { RootState } from "@/redux/store";
+import { logout } from "@/libs/redux/features/user/user";
+import { RootState } from "@/libs/redux/store";
 import Link from "next/link";
 import { LuLogOut } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";

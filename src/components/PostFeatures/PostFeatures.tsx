@@ -1,10 +1,10 @@
 "use client";
-import { focusInputComment } from "@/redux/features/systemFeatures/systemFeatures";
-import { togglePostLike } from "@/redux/features/post/post";
-import { RootState } from "@/redux/store";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FeatureType } from "@/types/featureType";
+import { RootState } from "@/libs/redux/store";
+import { togglePostLike } from "@/libs/redux/features/post/post";
+import { focusInputComment } from "@/libs/redux/features/systemFeatures/systemFeatures";
 
 export default function Features() {
   const { features } = useSelector((state: RootState) => state.systemFeatures);
@@ -46,7 +46,9 @@ export default function Features() {
             feature.name === "like" && liked
               ? "bg-blue-500 text-white enabled:hover:bg-opacity-90 disabled:hover:bg-opacity-100"
               : ""
-          }`}
+          } 
+          ${feature.name === "share" ? "order-1" : ""} 
+          ${feature.name === "like" ? "-order-1" : ""}`}
         >
           {feature.name}
         </button>

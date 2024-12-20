@@ -1,5 +1,5 @@
 "use client";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/libs/redux/store";
 import { AuditLogType } from "@/types/auditLogType";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -52,25 +52,28 @@ export default function AuditLogs() {
                   </tr>
                 </thead>
                 <tbody className=" divide-y divide-gray-200">
-                  {auditLogs?.map((log: AuditLogType) => (
-                    <tr key={log.id} className="md:space-y-2 text-center">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {log.featureName}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {log.timestamp}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {log.previousState.toString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {log.newState.toString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {log.changedBy}
-                      </td>
-                    </tr>
-                  ))}
+                  {auditLogs
+                    ?.slice()
+                    .reverse()
+                    .map((log: AuditLogType) => (
+                      <tr key={log.id} className="md:space-y-2 text-center">
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {log.featureName}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {log.timestamp}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {log.previousState ? "On" : "Off"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {log.newState ? "On" : "Off"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {log.changedBy}
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
