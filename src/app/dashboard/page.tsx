@@ -27,7 +27,8 @@ export default function Dashboard() {
       <LogoutButton />
       <Link
         href="/"
-        className="fixed bottom-4 end-4 bg-[#1b1f23] p-2 rounded-full text-xl"
+        className="border-2  hover:text-blue-500 border-gray-500 fixed bottom-4 end-4 text-2xl bg-[#1b1f23] p-2 rounded-full"
+        title="Home page"
       >
         <TiHome />
       </Link>

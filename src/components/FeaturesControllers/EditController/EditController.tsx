@@ -1,6 +1,6 @@
 "use client";
-import { editFeature } from "@/libs/redux/features/systemFeatures/systemFeatures";
-import { RootState } from "@/libs/redux/store";
+import { updateFeature } from "@/libs/redux/features/systemFeatures/systemFeatures";
+import { AppDispatch, RootState } from "@/libs/redux/store";
 import { FeatureType } from "@/types/featureType";
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function EditController() {
   const { features } = useSelector((state: RootState) => state.systemFeatures);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const [selectingFeature, setSelectingFeature] = useState(true);
   const [selectedFeature, setSelectedFeature] = useState<FeatureType>(
@@ -29,10 +29,9 @@ export default function EditController() {
     const formData = new FormData(e.currentTarget);
     const name = formData.get("featureName") as string;
     const description = formData.get("featureDescription") as string;
-    const newEditedFeature = { ...selectedFeature, name, description };
 
     const id = selectedFeature.id;
-    dispatch(editFeature({ id, newEditedFeature }));
+    dispatch(updateFeature({ id, name, description }));
     handleCloseEditModal();
   };
 
@@ -63,7 +62,7 @@ export default function EditController() {
             </h2>
             {selectingFeature ? (
               <>
-                <ul className="space-y-2">
+                <ul className="space-y-2 max-h-52 overflow-auto">
                   {features?.map((feature: FeatureType, index: number) => (
                     <li key={feature.id}>
                       <label

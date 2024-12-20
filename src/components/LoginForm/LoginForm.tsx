@@ -1,24 +1,24 @@
 "use client";
-
 import { login } from "@/libs/redux/features/user/user";
+import { AppDispatch } from "@/libs/redux/store";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 export default function LoginForm() {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const [errors, setErrors] = useState(false);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const username = formData.get("username") as string;
+    const name = formData.get("username") as string;
     const password = formData.get("password") as string;
 
     const users = ["admin", "user"];
-    if (users.includes(username) && username === password) {
+    if (users.includes(name) && name === password) {
       setErrors(false);
-      dispatch(login({ username }));
+      dispatch(login({ name, password }));
     } else {
       setErrors(true);
     }

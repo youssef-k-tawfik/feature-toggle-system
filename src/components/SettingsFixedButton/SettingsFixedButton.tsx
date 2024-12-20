@@ -5,7 +5,7 @@ import FeaturesList from "../FeaturesList/FeaturesList";
 import { IoIosClose } from "react-icons/io";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/libs/redux/store";
 
 export default function SettingsButton() {
   const { userToken } = useSelector((state: RootState) => state.user);
@@ -18,8 +18,9 @@ export default function SettingsButton() {
     <div className="fixed bottom-4 right-4">
       <button
         onClick={handleGearClick}
-        className="bg-[#1b1f23] text-white p-3 rounded-full"
+        className="border-2  border-gray-500  hover:text-blue-500 bg-[#1b1f23] text-white p-3 rounded-full"
         data-testid="settings-button"
+        title="Settings"
       >
         <FaGear />
       </button>
@@ -36,7 +37,7 @@ export default function SettingsButton() {
             {userToken && (
               <Link
                 href={"/dashboard"}
-                className="bg-blue-500 min-w-max block p-2 rounded-b-l"
+                className="text-center bg-blue-500 min-w-max block p-2 rounded-b-l"
               >
                 Go to Dashboard
               </Link>

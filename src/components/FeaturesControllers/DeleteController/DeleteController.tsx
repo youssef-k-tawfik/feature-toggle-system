@@ -1,6 +1,6 @@
 "use client";
-import { deleteFeatures } from "@/libs/redux/features/systemFeatures/systemFeatures";
-import { RootState } from "@/libs/redux/store";
+import { deleteFeature } from "@/libs/redux/features/systemFeatures/systemFeatures";
+import { AppDispatch, RootState } from "@/libs/redux/store";
 import { FeatureType } from "@/types/featureType";
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function DeleteController() {
   const { features } = useSelector((state: RootState) => state.systemFeatures);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const [checkedFeaturesToBeDeleted, setCheckedFeaturesToBeDeleted] = useState(
     [] as string[]
@@ -35,7 +35,10 @@ export default function DeleteController() {
   };
 
   const handleDeletingFeature = () => {
-    dispatch(deleteFeatures({ IDs: checkedFeaturesToBeDeleted }));
+    checkedFeaturesToBeDeleted.forEach((id) => {
+      dispatch(deleteFeature(id));
+    });
+
     handleCloseDeleteModal();
   };
 
@@ -73,7 +76,7 @@ export default function DeleteController() {
             <h2 className="text-xl font-bold mb-4 text-center">
               Deleting features
             </h2>
-            <ul className="space-y-2">
+            <ul className="space-y-2 max-h-52 overflow-auto">
               {features?.map((feature: FeatureType) => (
                 <li key={feature.id}>
                   <label

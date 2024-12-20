@@ -1,6 +1,6 @@
 "use client";
-import { addNewFeature } from "@/libs/redux/features/systemFeatures/systemFeatures";
-import { RootState } from "@/libs/redux/store";
+import { createFeature } from "@/libs/redux/features/systemFeatures/systemFeatures";
+import { AppDispatch, RootState } from "@/libs/redux/store";
 import { FeatureType } from "@/types/featureType";
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function AddController() {
   const { features } = useSelector((state: RootState) => state.systemFeatures);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [addErrors, setAddErrors] = useState(false);
@@ -45,7 +45,7 @@ export default function AddController() {
     }
 
     setAddErrors(false);
-    dispatch(addNewFeature(newFeature));
+    dispatch(createFeature(newFeature));
     setIsAddModalOpen(false);
   };
 

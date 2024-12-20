@@ -2,14 +2,17 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FeatureType } from "@/types/featureType";
-import { RootState } from "@/libs/redux/store";
+import { AppDispatch, RootState } from "@/libs/redux/store";
 import { togglePostLike } from "@/libs/redux/features/post/post";
-import { focusInputComment } from "@/libs/redux/features/systemFeatures/systemFeatures";
 
 export default function Features() {
   const { features } = useSelector((state: RootState) => state.systemFeatures);
   const { liked } = useSelector((state: RootState) => state.post);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
+
+  const postFeatures: FeatureType[] = features?.filter((feature: FeatureType) =>
+    ["like", "comment", "share"].includes(feature.name)
+  );
 
   // Tooltip State used to show the tooltip when the user clicks on share the feature
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
@@ -21,7 +24,7 @@ export default function Features() {
         dispatch(togglePostLike());
         break;
       case "comment":
-        dispatch(focusInputComment());
+        document.getElementById("newCommentInput")?.focus();
         break;
       case "share":
         // copies the url to the clipboard telling the user for 2 seconds
@@ -36,8 +39,8 @@ export default function Features() {
   };
 
   return (
-    <div className="flex mb-2 gap-1 relative">
-      {features?.map((feature: FeatureType) => (
+    <div className="flex my-2 gap-1 relative">
+      {postFeatures?.map((feature: FeatureType) => (
         <button
           key={feature.id}
           disabled={!feature.enabled}

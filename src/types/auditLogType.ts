@@ -1,5 +1,5 @@
 export interface AuditLogType {
-  id: string;
+  id?: string;
   featureName: string;
   previousState: boolean;
   newState: boolean;
