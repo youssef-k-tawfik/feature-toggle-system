@@ -1,6 +1,6 @@
 "use client";
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/libs/redux/store";
 import { CommentType } from "@/types/commentType";
 import Comment from "./Comment/Comment";
 import NewCommentInput from "./NewCommentInput/NewCommentInput";

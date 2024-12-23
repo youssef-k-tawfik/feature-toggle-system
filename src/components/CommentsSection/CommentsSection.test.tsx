@@ -1,20 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import CommentsSection from "./CommentsSection";
 import "@testing-library/jest-dom";
 import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import {
-  mockStore,
-  features,
-  comments,
-} from "@/redux/mockStore";
-
-const renderWithProvider = (
-  ui: React.ReactElement,
-  store: ReturnType<typeof configureStore> = mockStore
-) => {
-  return render(<Provider store={store}>{ui}</Provider>);
-};
+import { features, comments } from "@/libs/redux/mockStore";
+import { FeatureType } from "@/types/featureType";
+import { renderWithProvider } from "@/utils/RenderWithProviderTestUtil";
 
 describe("Comments Section component", () => {
   it("renders comments", () => {
@@ -34,7 +24,7 @@ describe("Comments Section component", () => {
       reducer: {
         systemFeatures: (
           state = {
-            features: features.map((f) =>
+            features: features.map((f: FeatureType) =>
               f.name === "comment" ? { ...f, enabled: false } : f
             ),
           }

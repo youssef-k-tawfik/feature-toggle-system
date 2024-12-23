@@ -1,6 +1,5 @@
 "use client";
-
-import { RootState } from "@/redux/store";
+import { RootState } from "@/libs/redux/store";
 import { FeatureType } from "@/types/featureType";
 import { useSelector } from "react-redux";
 

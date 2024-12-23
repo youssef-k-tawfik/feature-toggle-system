@@ -1,14 +1,14 @@
 import { describe } from "node:test";
 import postReducer, { togglePostLike } from "./post";
-import { comments as mockComments } from "@/redux/mockStore";
+import { comments as mockComments } from "@/libs/redux/mockStore";
 
 const initialState = {
-      liked: false,
-      likesCount: 2,
-      commentsCount: 2,
-      comments: mockComments,
-      sharesCount: 0,
-    };
+  liked: false,
+  likesCount: 2,
+  commentsCount: 2,
+  comments: mockComments,
+  sharesCount: 0,
+};
 
 describe("Redux: postReducer", () => {
   it("should return the initial state", () => {

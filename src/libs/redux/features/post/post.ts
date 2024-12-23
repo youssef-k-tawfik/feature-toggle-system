@@ -1,4 +1,4 @@
-import CommentType from "@/types/commentType";
+import { CommentType } from "@/types/commentType";
 import { createSlice } from "@reduxjs/toolkit";
 import { comments as mockComments } from "../../mockStore";
 

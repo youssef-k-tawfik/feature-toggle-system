@@ -1,16 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
+import { fireEvent, screen } from "@testing-library/react";
 import SettingsButton from "./SettingsFixedButton";
-import { configureStore } from "@reduxjs/toolkit";
-import { mockStore } from "@/redux/mockStore";
 import "@testing-library/jest-dom";
-
-const renderWithProvider = (
-  ui: React.ReactElement,
-  store: ReturnType<typeof configureStore> = mockStore
-) => {
-  return render(<Provider store={store}>{ui}</Provider>);
-};
+import { renderWithProvider } from "@/utils/RenderWithProviderTestUtil";
 
 describe("SettingsButton component", () => {
   it("renders the settings button", () => {

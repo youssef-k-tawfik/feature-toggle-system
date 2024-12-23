@@ -56,6 +56,7 @@ export default function EditController() {
             <IoIosClose
               className="absolute top-0 start-0 text-xl text-red-500 hover:text-gray-200 hover:bg-red-500 cursor-pointer rounded-br-sm"
               onClick={handleCloseEditModal}
+              data-testid="close-edit-modal"
             />
             <h2 className="text-xl font-bold mb-4 text-center">
               Edit a feature

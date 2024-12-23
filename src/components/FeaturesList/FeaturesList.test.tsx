@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import FeaturesList from "./FeaturesList";
-import { mockStore } from "@/redux/mockStore";
+import { mockStore } from "@/libs/redux/mockStore";
 import "@testing-library/jest-dom";
 
 describe("FeaturesList", () => {

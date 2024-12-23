@@ -12,7 +12,6 @@ export default function LogoutButton() {
   if (!userToken) return null;
 
   const handleClick = () => {
-    localStorage.removeItem("userToken");
     dispatch(logout());
   };
 

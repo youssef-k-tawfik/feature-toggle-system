@@ -21,7 +21,7 @@ export const fetchFeatures = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get("/api/feature");
-      console.log("Fetched features successfully!");
+      // console.log("Fetched features successfully!");
       return response.data;
     } catch (error) {
       return rejectWithValue(error);
@@ -41,7 +41,7 @@ export const createFeature = createAsyncThunk(
       if (error) {
         return rejectWithValue(error);
       }
-      console.log(`Created ${newFeature.name} successfully!`);
+      // console.log(`Created ${newFeature.name} successfully!`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error);
@@ -61,7 +61,7 @@ export const updateFeature = createAsyncThunk(
       if (error) {
         return rejectWithValue(error);
       }
-      console.log(`Updated ${updatedFeature.name} successfully!`);
+      // console.log(`Updated ${updatedFeature.name} successfully!`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error);
@@ -78,7 +78,7 @@ export const deleteFeature = createAsyncThunk(
       if (error) {
         return rejectWithValue(error);
       }
-      console.log(`Deleted feature with ID: ${id} successfully!`);
+      // console.log(`Deleted feature with ID: ${id} successfully!`);
       return id;
     } catch (error) {
       return rejectWithValue(error);
@@ -98,9 +98,9 @@ export const toggleFeature = createAsyncThunk(
       if (error) {
         return rejectWithValue(error);
       }
-      console.log(
-        `Toggled feature with ID: ${toggledFeature.id} successfully!`
-      );
+      // console.log(
+      //   `Toggled feature with ID: ${toggledFeature.id} successfully!`
+      // );
       return response.data;
     } catch (error) {
       return rejectWithValue(error);

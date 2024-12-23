@@ -1,16 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import Features from "./PostFeatures";
 import "@testing-library/jest-dom";
 import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import { mockStore, features, comments } from "@/redux/mockStore";
-
-const renderWithProvider = (
-  ui: React.ReactElement,
-  store: ReturnType<typeof configureStore> = mockStore
-) => {
-  return render(<Provider store={store}>{ui}</Provider>);
-};
+import { features, comments } from "@/libs/redux/mockStore";
+import { renderWithProvider } from "@/utils/RenderWithProviderTestUtil";
 
 describe("PostFeatures component", () => {
   it("renders all features", () => {

@@ -1,16 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Home from "./page";
-import { Provider } from "react-redux";
-import { mockStore } from "@/redux/mockStore";
-import { configureStore } from "@reduxjs/toolkit";
-
-const renderWithProvider = (
-  ui: React.ReactElement,
-  store: ReturnType<typeof configureStore> = mockStore
-) => {
-  return render(<Provider store={store}>{ui}</Provider>);
-};
+import { renderWithProvider } from "@/utils/RenderWithProviderTestUtil";
 
 describe("Home component", () => {
   it("renders without crashing", () => {
