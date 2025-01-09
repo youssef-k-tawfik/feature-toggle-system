@@ -61,7 +61,7 @@ This will allow you to interact with your Prisma client and perform any necessar
 Execute the following script only once to set up the initial data:
 
 ```bash
-npx ts-node -P tsconfig.script.json prisma/script.ts
+npx ts-node -P tsconfig.script.json prisma/seed.ts
 ```
 
 ## Running the Development Server
