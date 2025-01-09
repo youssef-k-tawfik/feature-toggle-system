@@ -3,6 +3,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
+  // Delete all data from AuditLog, Feature, and User tables
+  await prisma.auditLog.deleteMany({});
+  await prisma.feature.deleteMany({});
+  await prisma.user.deleteMany({});
+
   await prisma.user.createMany({
     data: [
       {

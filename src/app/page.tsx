@@ -3,6 +3,7 @@ import Comments from "@/components/CommentsSection/CommentsSection";
 import LogoutButton from "@/components/LogoutButton/LogoutButton";
 import Features from "@/components/PostFeatures/PostFeatures";
 import LikesCounter from "@/components/PostStatistics/PostStatistics";
+import ResetInitialDataButton from "@/components/ResetInitialDataButton";
 import SettingsButton from "@/components/SettingsFixedButton/SettingsFixedButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,8 +11,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex justify-center items-center min-h-screen py-10">
+      <ResetInitialDataButton />
       <div className="bg-[#1b1f23]  rounded-lg p-4 max-w-md w-full">
-        {/* Pose Header */}
+        {/* Post Header */}
         <div className="flex items-center mb-4">
           <Avatar src="https://avatars.githubusercontent.com/u/118983781?v=4" />
           <div className="ml-3">

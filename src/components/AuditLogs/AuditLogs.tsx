@@ -62,7 +62,7 @@ export default function AuditLogs() {
           {filteredLogs.length === 0 ? (
             <p className="text-center">No Audit Logs</p>
           ) : (
-            <div className="overflow-x-auto">
+            <div className="max-h-[400px] overflow-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="text-center">
                   <tr>
@@ -83,7 +83,7 @@ export default function AuditLogs() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className=" divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-200">
                   {filteredLogs
                     ?.slice()
                     .reverse()
